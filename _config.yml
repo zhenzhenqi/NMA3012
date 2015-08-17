@@ -3,7 +3,7 @@ title: NMA3012
 email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
   This is the class note for NMA3012.
-baseurl: "/"
+baseurl: "http://zhenzhenqi.github.io/NMA3012/"
 #baseurl: ""
 url: "" # the base hostname & protocol for your site
 twitter_username: jekyllrb
