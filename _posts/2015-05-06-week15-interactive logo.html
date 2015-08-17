@@ -1,0 +1,144 @@
+--- 
+layout: default 
+---
+
+<h2>Cartician, polar and spherical coordinates</h2>
+console.log("drawing tests");
+
+
+<p>First, let's practise a simple drawing of trignomitry.</p>
+ {% highlight js %} 
+var x;
+var y;
+var coswave = [];
+var angel = [];
+
+
+function setup() {
+    //create full width and full height p5 canvas
+    var myCanvas = createCanvas(400, 400);
+    myCanvas.parent('bg-canvas');
+
+    for (var i = 0; i < width; i++) {
+        angel[i] = map(i, 0, width, 0, PI * 2);
+    }
+    background(255);
+}
+
+function draw() {
+    clear();
+    stroke = 0;
+
+    for (var i = 0; i < angel.length; i++) {
+        y = cos(angel[i]) * 50 + 100;
+        point(i, y);
+    }
+
+    for (var i = 0; i < angel.length; i++) {
+        angel[i] += 0.01;
+    }
+}
+
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}                                 
+{% endhighlight %} 
+                                     
+                   
+<p>Now, let's practice using cosine wave value to control color of graphics.
+{% highlight js %} 
+console.log("drawing tests");
+
+var coswave = [];
+
+function setup() {
+    //create full width and full height p5 canvas
+    var myCanvas = createCanvas(400, 400);
+    myCanvas.parent('bg-canvas');
+
+
+    for (var i = 0; i < width; i++) {
+        coswave[i] = abs(cos(map(i, 0, width, 0, PI * 2)));
+    }
+    background(255);
+    noLoop;
+}
+
+function draw() {
+    var y1 = 0;
+    var y2 = height / 3;
+    for (var i = 0; i < width; i += 3) {
+        stroke(coswave[i] * 255);
+        line(i, y1, i, y2);
+    }
+
+    y1 = y2;
+    y2 = height / 3 * 2
+    for (var i = 0; i < width; i += 3) {
+        stroke(coswave[i] * 255 / 4);
+        line(i, y1, i, y2);
+    }
+
+    y1 = y2;
+    y2 = height;
+    for (var i = 0; i < width; i += 3) {
+        stroke(255 - coswave[i] * 255);
+        line(i, y1, i, y2);
+    }
+}
+
+function mousePressed() {}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+{% endhighlight %} 
+
+<img class="img-responsive" src="{{ '/img/week15/cosandverticalpattern.jpg' | prepend: site.baseurl }}">
+
+<p>Now, let's look at a cartician to polar translation example, with velocity and acceleration.</p>
+{% highlight js %}
+var r;
+
+// Angle and angular velocity, accleration
+var theta;
+var theta_vel;
+var theta_acc;
+
+function setup() {
+  var myCanvas = createCanvas(710, 400);
+  myCanvas.parent('bg-canvas');
+
+  
+  // Initialize all values
+  r = height * 0.45;
+  theta = 0;
+  theta_vel = 0;
+  theta_acc = 0.0001;
+}
+
+function draw() {
+  
+  background(0);
+  
+  // Translate the origin point to the center of the screen
+  translate(width/2, height/2);
+  
+  // Convert polar to cartesian
+  var x = r * cos(theta);
+  var y = r * sin(theta);
+  
+  // Draw the ellipse at the cartesian coordinate
+  ellipseMode(CENTER);
+  noStroke();
+  fill(200);
+  ellipse(x, y, 32, 32);
+  
+  // Apply acceleration and velocity to angle 
+  // (r remains static in this example)
+  theta_vel += theta_acc;
+  theta += theta_vel;
+}
+{% endhighlight %}
+

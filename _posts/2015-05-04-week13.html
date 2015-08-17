@@ -1,0 +1,203 @@
+--- 
+layout: default 
+---
+
+
+<h2>Configuring Custom Domain</h2>
+<h4>If you have your github page published successfully already, here is the tutorial to help you redirect your page to a custom domain you purchased with some DNS provider(ie.,Godaddy).  </h4>
+<ol>
+    <li>Add a file to the root directory and put your custom domain in that file. Then, register the same CNAME entry with your DNS provider.
+
+        <a href="https://help.github.com/articles/adding-a-cname-file-to-your-repository/">https://help.github.com/articles/adding-a-cname-file-to-your-repository/</a>
+    </li>
+    <li>Configure A Record with DNS provider
+        <a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider/">https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider/</a>
+    </li>
+</ol>
+<p>Feel free to try it and ask me any questions.</p>
+
+<h2>Simple Music Visualization</h2>
+<p>Some of you have been getting error messages for p5 sound library.The CDN still hosts an older version. Please download the newest version from here, <a href="https://raw.githubusercontent.com/therewasaguy/p5-music-viz/master/lib/p5.sound.js">https://raw.githubusercontent.com/therewasaguy/p5-music-viz/master/lib/p5.sound.js</a>
+</p>
+
+<p>Remeber the Jitter object sketch we worked on from a few weeks ago? Let's convert it to a simple music viz sketch.</p>
+{% highlight js %} 
+console.log("landing.js loaded");
+
+var song, analyzer, vol;
+var bugs = []; // array of Jitter objects
+
+function preload() {
+    song = loadSound('trials.mp3');
+}
+
+function setup() {
+    var myCanvas = createCanvas(window.innerWidth, window.innerHeight);
+    myCanvas.parent('bg-image');
+
+    song.loop();
+
+    // create a new Amplitude analyzer
+    analyzer = new p5.Amplitude();
+
+    // Patch the input to an volume analyzer
+    analyzer.setInput(song);
+}
+
+
+function draw() {
+    clear();
+    vol = analyzer.getLevel();
+
+    for (var i = 0; i < bugs.length; i++) {
+        bugs[i].move();
+        bugs[i].display();
+        if (bugs[i].y > height) {
+            bugs[i].y -= height;
+        }
+    }
+}
+
+function mouseClicked() {
+    bugs.push(new Jitter());
+};
+
+
+// Jitter class
+function Jitter() {
+    this.x = random(width);
+    this.y = random(height);
+    this.r = random(0.3, 0.8);
+    this.speed = random(0.5,2);
+    //    this.r = vol;
+
+    this.move = function () {
+        this.x += random(-this.speed, this.speed);
+        this.y += +this.speed;
+    };
+
+    this.display = function () {
+        noStroke();
+        fill("rgb(244, 35, 0)");
+        ellipse(this.x, this.y, this.r*vol* 200, this.r*vol* 200);
+        fill(0);
+        ellipse(this.x, this.y, this.r*vol*150, this.r*vol*150);
+        fill("rgb(244, 35, 0)");
+        ellipse(this.x, this.y, this.r*vol* 100, this.r*vol*100);
+    };
+};
+
+{% endhighlight %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/fRx9Br2iV7k?rel=0" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Mouse Interactions</h2>
+<p>Now, let's add sinewave mouse interactions along x direction</p>
+{% highlight js %} 
+    this.theta = random(0, 2*PI);
+
+    this.move = function () {        
+        this.x += sin(this.theta);
+        this.y += this.speed;
+        this.theta += 0.02;
+    };
+{% endhighlight %}
+<p>Now, let's shift dots location with mouseMove. And make dots look like snow flakes.</p>
+
+{% highlight js %} 
+console.log("landing.js loaded");
+
+
+var song, analyzer, vol;
+var bugs = []; // array of Jitter objects
+var myX;
+
+function preload() {
+    song = loadSound('WalkingWithHappiness.mp3');
+}
+
+function setup() {
+    var myCanvas = createCanvas(window.innerWidth, window.innerHeight);
+    myCanvas.parent('bg-image');
+
+    song.loop();
+
+    // create a new Amplitude analyzer
+    analyzer = new p5.Amplitude();
+
+    // Patch the input to an volume analyzer
+    analyzer.setInput(song);
+
+    for (var i = 0; i < 70; i++) {
+        bugs.push(new Jitter());
+    }
+}
+
+
+function draw() {
+    myX = mouseX;
+    clear();
+    vol = analyzer.getLevel();
+
+    for (var i = 0; i < bugs.length; i++) {
+        bugs[i].move();
+        bugs[i].display();
+        if (bugs[i].y > height) {
+            bugs[i].y -= height;
+        }
+    }
+}
+
+
+function mouseDragged() {
+    for (var i = 0; i < bugs.length; i++) {
+        bugs[i].x += (mouseX - myX)*random(0,1);  
+    }
+}
+
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+// Jitter class
+function Jitter() {
+    this.x = random(width - 50);
+    this.y = random(height);
+    this.r = random(0.05, 0.5);
+
+    this.speed = random(0.5, 2);
+    this.theta = random(0, 2 * PI) * this.r;
+    this.alpha = random(0.03, 0.2);
+
+    this.move = function () {
+        this.x += sin(this.theta);
+        this.y += this.speed;
+        this.theta += 0.02;
+    };
+
+    this.display = function () {
+        noStroke();
+        fill("rgba(244, 35, 0," + this.alpha.toString() + ")");
+        ellipse(this.x, this.y, this.r * vol * 200, this.r * vol * 200);
+        this.alpha += 0.1;
+        fill("rgba(244, 35, 0," + this.alpha.toString() + ")");
+        ellipse(this.x, this.y, this.r * vol * 150, this.r * vol * 150);
+        this.alpha += 0.1;
+        fill("rgba(244, 35, 0," + this.alpha.toString() + ")");
+        ellipse(this.x, this.y, this.r * vol * 100, this.r * vol * 100);
+        this.alpha = random(0.03, 0.2);
+    };
+};
+{% endhighlight %}
+
+<h2>More Effects</h2>
+<p>Background Image and Video</p>
+
+<p>Load Image</p>
+
+<p>Gravity</p>
+
+
+
+    

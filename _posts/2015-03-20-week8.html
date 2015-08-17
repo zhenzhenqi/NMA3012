@@ -1,0 +1,83 @@
+--- 
+layout: default 
+---
+
+
+<div class="row">
+    <h2>Modal</h2>
+    <ol>
+        <li>Here is the standard Modal code on Bootstrap's website. We will copy and customize it to our own website.</li>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/wr58k4of/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <li>Bootstrap's modal works by matching "data-target" attribute with the id name of the actual model. So, let's id our model myModal</li>
+        <li>Also, we need to convert the thumbnail image associated to the Model by adding data-toggle and data-target.</li>
+        <li>lastly, we need a modal-body tag inside of modal-content tag that holds the actual modal image to be displayed.
+            <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/wr58k4of/1/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        </li>
+
+    </ol>
+</div>
+
+<div class="row">
+    <h2>Animate.css</h2>
+    <ol>
+        <li>Let's first have some fun. Go to the link below and play with the different pre-canned animation effects here.
+            <a href="http://daneden.github.io/animate.css/">http://daneden.github.io/animate.css/</a>
+        </li>
+        <li>Let's have more fun by adding this htmp example code into our own html elements.
+            <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/wr58k4of/4/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            You can swap "bounced" with anything from this list here.
+            <a href="https://github.com/daneden/animate.css">https://github.com/daneden/animate.css</a>
+        </li>
+        <li>Now, let's add some jQuery to controll the timing of these effects. First, when index.html is fully loaded, fade in our navbar. 
+            {% highlight js %} 
+            $(document).ready(function () { 
+                $("nav").addClass('animated fadeIn'); 
+            }); 
+            {% endhighlight %}
+        </li>
+        <li>Now, let's tell jQuery to help us measure the location of a few things: 
+            <br>how much is the entire document scrolled down
+            <br>our animated element's location from the top of the document. It's called offset.
+            <br>viewport height
+        </li>
+        <hr>
+        <li>We will be able to tell wheather our element has entered into viewport by using this if statment<br>
+       <br> <strong>offset - document_scoll_distance < than viewport height</strong><br><br>
+            
+            {% highlight js %}
+$(document).ready(function () {
+    $("nav").addClass('animated fadeIn');
+    $("#featured_1").addClass('animated fadeInRight');
+});
+
+
+$(window).scroll(function(){
+//    console.log("scrolled!");   
+    var how_much_document_scrolled = $(document).scrollTop();
+//    console.log(how_much_document_scrolled);
+    
+    var h1_offset_top = $('#tagline h1').offset().top;
+     console.log(h1_offset_top);
+    
+//    console.log(how_much_document_scrolled + "," + h1_offset_top);
+    
+    if(h1_offset_top - how_much_document_scrolled < window.innerHeight){
+        $('#tagline h1').addClass('animated fadeInDown');
+    }
+    
+    
+    var h3_offset_top = $('#founder h3').offset().top;
+    if(h3_offset_top - how_much_document_scrolled < window.innerHeight-100){
+        $('#founder h3').addClass('animated lightSpeedIn');
+    }
+});
+            {% endhighlight %}
+                                                                        
+        </li><hr>
+        <li>Let's do one more example. Say we want the h3 tag inside #founder id to bounce in from right when it is 100 px above the bottom of the viewport.
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/wr58k4of/5/embedded/js" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        
+        </li>
+    </ol>
+
+</div>

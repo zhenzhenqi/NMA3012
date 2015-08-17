@@ -1,0 +1,171 @@
+--- 
+layout: default 
+---
+
+<div class="row">
+     <h2>Transation and Rotation</h2>
+     <p>The example below demonstrates two important concept, Transation and Rotation.</p>
+     <img class="img-responsive" src="{{ '/img/transationandrotation.jpg' | prepend: site.baseurl }}">
+    {% highlight js %} 
+    console.log("drawing tests");
+
+
+function setup() {
+    //create full width and full height p5 canvas
+    var myCanvas = createCanvas(400, 400);
+    myCanvas.parent('test');
+}
+
+function draw() {
+  background(200);
+  translate(200, 200);
+  rect(0, 0, 50, 50);
+  rotate(PI/3.0);
+  rect(0, 0, 50, 50);
+  rotate(PI/3.0);
+  rect(0, 0, 50, 50);
+  rotate(PI/3.0);
+  rect(0, 0, 50, 50);
+  rotate(PI/3.0);
+  rect(0, 0, 50, 50);
+  rotate(PI/3.0);
+  rect(0, 0, 50, 50);
+}
+
+function mousePressed() {
+
+}
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+}
+    {% endhighlight %} 
+</div>
+
+
+
+<div class="row">
+    <h2>P5 continued</h2>
+    <ol>
+        <li>First, let's finish setting up the contact page the same way we set up about page.
+        <p>Here is the link to the latest p5.js cdn. <a href="http://cdnjs.com/libraries/p5.js/">http://cdnjs.com/libraries/p5.js/</a></p>
+        <p>Please check to make sure you are linking version 4.4, not 4.3. P5 just updated to a new version and there are a few important functions we will use that's only available in the 4.4 version.</p>
+        <p>Please also link .min version of p5.js, p5.dom.js, and p5.sound.js.</p>
+        <li>Now, link your own sketch.js at the very bottom of html page, before html tag closes.
+        {% highlight js %} 
+        console.log("contact page animation is loaded!");
+        
+        function setup() {
+            var myCanvas = createCanvas(window.innerWidth, window.innerHeight);
+            myCanvas.parent('contact-animation');
+        }
+        function draw(){
+            clear();
+        }
+            
+        {% endhighlight %} 
+
+
+function draw() {
+        </li>
+        
+        <li>Here is the setup on contact.html.
+        {% highlight js %} 
+        <body id="contact-animation">
+        <script src="contact.js"></script>
+        </body>
+        {% endhighlight %} 
+        </li>
+        <li>Setup on custom.css to make sure that the sketch shows up at the top left corner of the html page.
+        {% highlight js %} 
+            #contact-animation {
+                position: absolute;
+            }
+        {% endhighlight %}
+        </li>
+        <li>Time to draw a little space alien. 
+            {% highlight js %} 
+            stroke(0); rect(100, 100, 20, 100); 
+            ellipse(100, 70, 60, 60); ellipse(81, 70, 16, 32); 
+            ellipse(119, 70, 16, 32); 
+            line(90, 150, 80, 160); 
+            line(110, 150, 120, 160); 
+            {% endhighlight %}
+        </li>
+        <li>Draw only the eyes, color it orange, when mouse is pressed. 
+            {% highlight js %}                  
+            
+            if (mouseIsPressed) 
+            { 
+                noStroke(); 
+                fill(244, 35, 0); 
+                ellipse(81, 70, 16, 32); 
+                ellipse(119, 70, 16, 32); 
+            } 
+            else { 
+                stroke(0); 
+                fill('rgba(51, 51, 51, 0.5)');
+                rect(100, 100, 20, 100); 
+                ellipse(100, 70, 60, 60); 
+                ellipse(81, 70, 16, 32); 
+                ellipse(119, 70, 16, 32); 
+                line(90, 150, 80, 160); 
+                line(110, 150, 120, 160); 
+                } 
+            
+            {% endhighlight %}
+        </li>
+        <li>Now, let's use 2 dimentional Perlin Noise to draw our interactive ocean wave. 
+            {% highlight js %} 
+            var yoff = 0.0; // 2nd dimension of perlin noise
+
+function setup() {
+    var myCanvas = createCanvas(window.innerWidth, window.innerHeight);
+    myCanvas.parent('contact-animation');
+}
+
+function draw() {
+    //    background(255);
+    clear();
+    noStroke();
+    fill("rgba(0, 0, 0, 0.2)");
+
+    beginShape();
+    var xoff = 0; 
+
+    // Iterate over horizontal pixels to draw one wave
+    for (var x = 0; x <= width + 10; x += 10) {
+        var y = map(noise(xoff, yoff), 0, 1, height - 400, height);
+        //draw each dot along the wave
+        vertex(x, y);
+        // Increment x dimension for noise
+        xoff += 0.05;
+    }
+    //draw a point at the lower right corner of the screen
+    vertex(width, height);
+    //draw a point at the lower left corner of the screen
+    vertex(0, height);
+    //connect all dots along the wave, and the two points at the corner
+    endShape();
+
+    // increment y dimension for the next wave
+    yoff += 0.01;
+}
+            {% endhighlight %} 
+        </li>
+    <li>For next week's homework, adapt an p5 example from this page to your website and show it to the class next week. You don't have to completely understand the code example. Just try to get it to work on your website and do something interactive with the mouse. The point is for you to get comfortable reading and understanding other people's code, which is a cruicial skill to develop as a creative coder. 
+        <br>See below for the link to the p5 example page, and a few examples that I recommend you start playing with.
+    <br><a href="http://p5js.org/learn/#examples">Link to all examples</a>
+    <p>Some individual examples to begin with.</p>
+    <a href="http://p5js.org/learn/examples/Image_Transparency.php">Tranparency</a>
+    <br><a href="http://p5js.org/learn/examples/Objects_Objects.php">Jittery ball object.</a>
+    <br><a href="http://p5js.org/learn/examples/Objects_Multiple_Objects.php">Multiple Jitter ball objects.</a>
+    <br><a href="http://p5js.org/learn/examples/Objects_Array_of_Objects.php">An Array of many many Jittery ball objects.</a>
+    <br><a href="http://p5js.org/learn/examples/Image_Load_and_Display_Image.php">Loading display image.</a>
+    <br><a href="http://p5js.org/learn/examples/Form_Star.php">Drawing shapes</a>
+    <br><a href="http://p5js.org/learn/examples/Form_Bezier.php">biezier curve</a>
+    <br><a href="http://p5js.org/learn/examples/Sound_Frequency_Spectrum.php">sound frequency visualization</a>
+    <br><a href="http://p5js.org/learn/examples/Sound__Amplitude_Analysis.php">Sound amplitude visualization</a>
+    </li>
+    </ol>
+</div>

@@ -1,0 +1,96 @@
+---
+layout: default
+#title:  "Welcome to Jekyll!"
+#date:   2015-03-17 21:23:43
+#categories: jekyll update
+---
+
+
+<div class="row">
+<h2>Carousel</h2>
+<ol>
+    <li>Quick words on how to make Carousel and control its width and height
+        <img class="img-responsive" src="{{ '/img/week6/carousel.jpg' | prepend: site.baseurl }}">
+    </li>
+    <li>Carousel's width can be controled using bootstrap column, just as how regular rows are controled.
+    </li>
+    <li>Carousel's images should all be the same dimension.
+    </li>
+    <li>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/snh6qmhw/1/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+    <li>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/snh6qmhw/1/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+</ol>
+</div>
+
+<div class="row">
+<h2>Quick Words on Font Awesome</h2>
+<a href="http://fortawesome.github.io/Font-Awesome/">http://fortawesome.github.io/Font-Awesome/</a>
+</div>
+
+<div class="row">
+<h2>Quick Words on title for a two-column div approach</h2>
+<img class="img-responsive" src="{{ '/img/week6/titlefortwocolumn.jpg' | prepend: site.baseurl }}">
+</div>
+
+<div class="row">
+<h2>CSS Transition</h2>
+<ol>
+    <li>Let's add a css fade and blur transition effect to all of our twocolumnlayout gallery images. This will allow you to see the effect immediately when hovering over images
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/yp9gdLw9/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+    <li>Now,let's add some trasition timing effect, so the transition is not so abrupt
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/yp9gdLw9/1/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+
+    <li>There is a list of image transition filter you can play with.
+        <br>The effects are very straigtforward. Just pay attenion to cross-broswer compatibility issue. It's a relatively new technology.
+        <br><a href="http://html5-demos.appspot.com/static/css/filters/index.html">http://html5-demos.appspot.com/static/css/filters/index.html</a>
+    </li>
+    <li>Let's talk a little bit about transition effect.
+        <br>The most important thing to watch out for, is that transition timing should be applied to the selector itself, not selector:hover
+        <br><a href="http://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp">http://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp</a>
+    </li>
+</ol>
+</div>
+
+
+<div class="row">
+<h2>JQuery Transition</h2>
+<ol>
+    <li>The main difference between css and jQuery transition is that, css can only affect the selector itself, and JavaScript can affect pretty much anything element that exists in the html page.
+    </li>
+    <li>Let's hide the first image's title, and make it show up only when we hover over it's respective image.
+    </li>
+    <li>Id the div that the first image belongs to "tribeca-loft"
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/yp9gdLw9/2/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+    <li>Now, open a custom.js file and link it to your header.
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/yp9gdLw9/3/embedded/js" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <p>"Document Ready" wrapper makes sure the code executes only after all images are loaded. It's a safe practise for image related javaScript.</p>
+        <p>Then, each Jquery commend follows a simple format, "When A does This, make B do That".</p>
+        <p>A more formal explanation is, there is a selector, an JQuery Event, a function inside which there is another selector and a JQuery Functions.</p>
+        <p>We are all familiar with css selector.</p>
+        <p>You can find the official definition of all JQuery Events here.
+            <a href="http://api.jquery.com/category/events/">http://api.jquery.com/category/events/</a>
+        </p>
+        <p>There are a lot of Jquery Functions that can be applied. The most common ones are attributes, css and effects.</p>
+        <p>You can find all of them here,<a href="http://api.jquery.com/category/">http://api.jquery.com/category/attributes/</a></p               
+    </li>
+    <li>The first JQuery we wrote together is a JQuery css function. Let's write another one using JQuery Effects function.
+    <p>This one allows us to control the speed of the fading of text.</p>
+    <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/yp9gdLw9/5/embedded/js" allowfullscreen="allowfullscreen" frameborder="0"></iframe>   
+    </li>
+    <li>Finally, let's make this effect active on all images in the twocolumn layout.
+        <p>add a .hide-title class to all the divs wrapping around your images.</p>
+        <p>Make it position: absolute</p>
+        <p>Make the h5 inside position: relative and opacity: 0</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/yp9gdLw9/7/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <p>Finally, the JQuery code that makes them black again when mouse enters image.</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/yp9gdLw9/6/embedded/js" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+</ol>
+
+

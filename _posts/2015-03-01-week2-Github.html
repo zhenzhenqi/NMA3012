@@ -1,0 +1,45 @@
+--- 
+layout: default 
+---
+
+<h2>Set up Bracket, Github, and publish your first github hosted website</h2>
+
+<ol>
+    <li>Download Brackets from Brackets.io if you don't have it installed yet.</li>
+    <li>Go to Finder=>Document folder and create a new folder called MMP240
+        <li>Open Brackets, create a new file called index.html, type "my first github website" and save it in the MMP240 folder created from the above step.</li>
+        <li>Go to github.com. Create a new account, and choose to set up a free plan.
+            <img src="{{ '/img/githubaccount.png' | prepend: site.baseurl }}" class="img-responsive">
+        </li>
+        <li>After clicing "Finishing sign up", go to your email account and verify your email address.</li>
+        <li>Open Github on your computer, sign into the account you just created on github.com</li>
+        <li>Click the "+" sign on the upper left corner, choose "add", and the path Document/MMP240
+            <p class="alert alert-success">Warning 1! The default repo setting is "create", make sure you click "add", which is the tab to the left of "create"</p>
+            <img src="{{ '/img/addgitfolder.png' | prepend: site.baseurl }}" class="img-responsive">
+            <p class="alert alert-success">Warning 2! When you add the path, it's very important that you click on the MMP240 folder icon just once, so that the folder icon is highlighted, but you can't see the files that's actually inside the MMP240 folder.
+            </p>
+            <img src="{{ '/img/addpath.jpg' | prepend: site.baseurl }}" class="img-responsive">
+        </li>
+        <em>Now, if you go to your MMP240 folder, you should see a subfolder named .git. This folder contains files that will help you perform version control automatically from this point on.</em>
+        <li>In Github, type "first commit" in symmary, click <span class="badge">commit</span> button, and <span class="badge">publish</span> button at the top right corner
+            <img src="{{ '/img/firstcommit.png' | prepend: site.baseurl }}" class="img-responsive">
+            <img src="{{ '/img/publish.png' | prepend: site.baseurl }}" class="img-responsive">
+        </li>
+        <li>Now, click <span class="badge">branch</span>tab at the top middel bar, and create a new branch called “gh-pages”.
+            <img src="{{ '/img/createbranch.jpg' | prepend: site.baseurl }}" class="img-responsive">
+        </li>
+        <li>Make sure "gh-pages" is now selected as current branch.</li>
+        <li>After "gh-pages" is created successfully, you can view your page on http://[github user name].github.io/[repo name].
+            <ul>
+                <li>for example, if you go to http://zhenzhenBMCC.github.io/MMP240, you should see "my first github webiste" on that page.</li>
+            </ul>
+            <div class="alert alert-success" role="alert">Congratulations! You just hosted your first website through Github Pages.</div>
+        </li>
+        <li>Now, go back to Brackets at type something more, go to Github <span class="badge">Changes</span>tab on the top, type "second commit", click <span class="badge">Commit</span>, then<span class="badge">sync</span>, your website should be updated automatically.
+        </li>
+        <li>Take a look at the <span class="badge">History</span>tab of your github, you can see notes and history from all your past commits.
+            <p>If anything goes wrong at any point during development, you can always go to "history", choose a previous version and rollback to this old version. See picture below.
+            </p>
+            <img src="{{ '/img/rollback.jpg' | prepend: site.baseurl }}" class="img-responsive">
+        </li>
+</ol>

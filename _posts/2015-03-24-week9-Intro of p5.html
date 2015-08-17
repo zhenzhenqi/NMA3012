@@ -1,0 +1,128 @@
+--- 
+layout: default
+---
+
+<div class="row">
+    <h2>Introduction of P5.js</h2>
+    <a href="http://hello.p5js.org/">Lauren McCarthy and Dan Shiffman, What is p5.js?</a>
+    <a href="http://irlclub.info/">An example of 3.js usage in real life.</a>
+    <ol>
+        <li>Intro of P5.JS web resources</li>
+        <li>Load an image as background.</li>
+        <li>Integrate HTML headline</li>
+        <li>Draw some primitive shapes</li>
+        <li>Draw three rectangles using CENTER mode</li>
+        <li>Add mouse-triggered resize event</li>
+        <li>If Statement</li>
+        <li>Video filters</li>
+    </ol>
+    <a href="http://zhenzhenqi.info/COMP104demo/time.html">Demo example link</a>
+</div>
+
+
+
+
+<p>Here is the time.html setup.</p>
+{% highlight js %}
+<html>
+
+<head>
+    <!--Support of foreigh character-->
+    <meta charset="utf-8">
+    <!--IE Compatibility Setting, "IE=Edge ensures IE uses the latest rendering engine-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Get physical width of the movile device-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Name of your website displayed on the browser tab-->
+    <title>COMP104demo</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="custom.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.4/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.4/addons/p5.dom.min.js"></script>
+    <script src="p5.sound.js"></script>
+</head>
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row" id="test">
+        </div>
+        <div id="time" class="align-right">
+            <h1>Time is an illusion</h1>
+            <p>-Albert Einstein</p>
+        </div>
+    </div> 
+</body>
+
+
+<script src="js/time.js"></script>
+
+</html>
+{% endhighlight %} 
+
+
+
+<p>Here is the time.js sketch.</p>
+{% highlight js %} 
+var myVideo;
+var videoX;
+var videoY;
+
+function setup() {
+    //create full width and full height p5 canvas
+    var myCanvas = createCanvas(window.innerWidth, window.innerHeight);
+    myCanvas.parent('test');
+
+    myVideo = createVideo('wheatfield.mp4');
+    
+    myVideo.loop(); // set the video to loop and start playing
+    myVideo.hide(); // by default video shows up in separate dom 
+    // element. hide it and draw it   
+
+    rectMode(CENTER);
+}
+
+function draw() {  
+   clear();
+    
+   if(dist(mouseX, mouseY, window.innerWidth/4*3, window.innerHeight/2)<100){
+       videoX=random(-5, 5);
+       videoY=random(-5, 5);
+   }else{
+       videoX = 0;
+       videoY = 0;
+   }
+   
+   image(myVideo, videoX-10, videoY-10, window.innerWidth+20, window.innerHeight+20);
+//    image(capture, 0, 0, window.innerWidth / 4, window.innerHeight / 2);
+    
+    fill("rgba(0, 0, 0, 0.2)");
+  
+    if(dist(mouseX, mouseY, window.innerWidth/4, window.innerHeight/2)<100){
+        rect(window.innerWidth/4, window.innerHeight/2, 200, 400);
+        filter('GRAY'); 
+    }else if(dist(mouseX, mouseY, window.innerWidth/2, window.innerHeight/2)<100){
+        rect(window.innerWidth/2, window.innerHeight/2, 200, 400);
+        myVideo.pause(); 
+    }else if(dist(mouseX, mouseY, window.innerWidth/4*3, window.innerHeight/2)<100){
+        rect(window.innerWidth/4*3, window.innerHeight/2, 200, 400);  
+        filter(POSTERIZE,8);
+    }else{
+        myVideo.loop();
+    };
+}
+
+
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+{% endhighlight %} 
+

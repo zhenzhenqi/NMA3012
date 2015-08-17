@@ -1,0 +1,117 @@
+---
+layout: default
+#title:  "Welcome to Jekyll!"
+#date:   2015-03-17 21:23:43
+#categories: jekyll update
+---
+
+
+<h2>Responsive Image Gallery and Contact Page.</h2>
+<p>Picking up from where we left off last week, what do you like and not like about what we have done so far?<a href="http://zhenzhenqi.github.io/MMP240demo-old/">http://zhenzhenqi.github.io/MMP240demo-old/</a>
+</p>
+<p>Go to <a href="https://github.com/zhenzhenqi/MMP240demo-old">https://github.com/zhenzhenqi/MMP240demo-old</a>, and download the folder.</p>
+<p>Unzip the folder. Open Github, ADD(not create pls!!!) this repo path. </p>
+<p>put in some note (like first commit), commit, and publish(edit the reponame to MMP240demo-inprogress, or something easy to remember)</p>
+<p>Add a gh-pages and publish. </p>
+<ol>
+    <p>Let's fix all mobile-responsive .intro column height issues first, row by row.</p>
+    <li>Try uncommenting the line of code that give all .intro classes the same height. Instead, give individual .intro class row an unique id, and give the last element of each row a margin-bottom value. For first .intro row, try the following css</li>
+    <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/4/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    <li>
+        <p>Give second .intro row, #founder's second child a margin-bottom value.</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/5/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+    <li>
+        <p>Give #founder a small left and right margin value inside mobile media-query block</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/6/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+    <li>
+        <p>Give #featured div a margin-top and bottom value</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/7/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <p>Notice how I styled the images to have same ratio and very similar color tone and exposure.</p>
+        <p>Now, edit col-xs columns in bootstrap to make mobile image gallery display 2, instead of 1 column. And disable the column-left, right padding in mobile media query.
+            <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/9/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            <p>Also, give #featured a margin-left, right in mobile media query.</p>
+            <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/10/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        </p>
+    </li>
+    <li>
+        <p>Give the .intro row containing embedded video an id="video". Give the tagline below the embedded video more room to breath.</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/8/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <p>Make the font of the tagline smaller in mobile media query by giving it font-size value</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/11/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </li>
+
+    <p>After all the mobile responsive issues are fixed, let's do a test on iPad mini.</p>
+    <p>One last issue to fix, which is the display of image gallery on iPad. It's too small with all size images in one row. Let's add a col-sm-4 class and a col-md-2 class to make the 6 images display in two rows on iPads.</p>
+    <img class="img-responsive" src="{{ '/img/week4/gallary-6.png' | prepend: site.baseurl }}">
+    <p>One last thing, let's make the left and right paddings 0 in iPad media query.</p>
+    <img class="img-responsive" src="{{ '/img/week4/gallery-3.png' | prepend: site.baseurl }}">
+    <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/12/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    <img class="img-responsive" src="{{ '/img/week4/gallery-nopadding.png' | prepend: site.baseurl }}">
+    <p>Perfecto!</p>
+
+    <div class="row">
+        <h2>Contact Page</h2>
+        <ol>
+            <li>In brackets, start a new file called contact.html. Go back to index.html's navigation bar, link contact.html to the contact tab of your navigation.</li>
+            <iframe width="100%" height="300" src="//jsfiddle.net/s7cour24/13/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            <li>Set up a new bootstrap page on contact.html by copying header file and navigation bar from index.html</li>
+            <p>Make sure in the body of this new page, you give it an id="page-contact"</p>
+            <iframe width="100%" height="300" src="//jsfiddle.net/s7cour24/15/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            <li>In custom.css, style this page so that it's background is bright orange: #F63D12
+                <iframe width="100%" height="300" src="//jsfiddle.net/s7cour24/16/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            </li>
+            <p>Inside container-fluid, open a new div class="row".</p>
+            <p>Google "bootstrap addresses" and copy and paste the sample code into your row.</p>
+            <p>Change "mailto:#" to "mailto: yourownemail@contact.com" </p>
+            <iframe width="100%" height="300" src="//jsfiddle.net/s7cour24/17/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            <p>Go back to contact.html, click on the mailto hyperlink and see what happens.</p>
+            <p>Give the container-fluid in this page a proper left and top margin so the address is nicely aligned with the navbar.</p>
+            <iframe width="100%" height="300" src="//jsfiddle.net/s7cour24/18/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            <p>Change the font inside Address tab to be slightly bigger.</p>
+            <p>Font weight a lot smaller(100), and color: white</p>
+            <iframe width="100%" height="300" src="//jsfiddle.net/s7cour24/20/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            <li>If you click on the brand logo RAAD STUDIO, it doesn't take us back to home page. So, let's fix it now.
+                <p>In contact.html, find where RAAD STUDIO is linking to, and change it to herf="/MMP240demo/index.html".</p>
+                <iframe width="100%" height="300" src="//jsfiddle.net/s7cour24/21/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            </li>
+            <li>Change the blue hyperlink to white, and give it text-decoration: underscore.</li>
+            <iframe width="100%" height="200" src="//jsfiddle.net/s7cour24/22/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            <img class="img-responsive" src="{{ '/img/week4/textdecoration.png' | prepend: site.baseurl }}">
+            <p>Your contact page should look like this now. Quite nice. Isn't it?</p>
+            <li>Now, publish this site to either github or your CUNY FTP account.</li>
+            <li>Go to <a href="https://developers.google.com/maps/documentation/embed/">https://developers.google.com/maps/documentation/embed/</a>, click on "build a map now"</li>
+            <li>Input an address of your choice, and click "Looks good!"</li>
+            <p>Now, you will be asked for an "API" Key.</p>
+            <li>Click "Register".</li>
+            <li>On the new page, click the blue "Goolge APIs console" hyper link.</li>
+            <p>Create a new project called MMP240.</p>
+            <li>Now you will see a list of services. Scroll down to "Google Maps Coordinate API", select this one. Also select the one below it called "Goolge Maps Embed API".</li>
+            <li>Now, go to the blue menu bar on the left hand side, and click "API Acess".</li>
+            <li>Click "create new browser key" button.</li>
+            <p>Enter the website address you justed published, and click "ok".</p>
+            <li>Now, you should see an API key that looks like this one below (highlighted in RED)</li>
+            <img class="img-responsive" src="{{ '/img/week4/APIkey.jpg' | prepend: site.baseurl }}">
+            <li>Copy it and paste it back into the first tab where you generated the Google Map, and click "done"</li>
+            <p>Now, you should see the iframe code apearing at the bottom.</p>
+            <img class="img-responsive" src="{{ '/img/week4/googlemap.jpg' | prepend: site.baseurl }}">
+            <li>In contact.html, write a new div class="row" below the address div, and paste the iframe code you have in there. This is the final result.</li>
+            <img class="img-responsive" src="{{ '/img/week4/contact-googlemap.png' | prepend: site.baseurl }}">
+            <p>You can also customize your Google Map. If you are interested, read <a href="https://developers.google.com/maps/tutorials/fundamentals/adding-a-google-map">https://developers.google.com/maps/tutorials/fundamentals/adding-a-google-map</a>
+            </p>
+            <p>This is the way I customized it. You can check it out at
+                <a href="http://zhenzhenqi.github.io/MMP240demo/contact.html">http://zhenzhenqi.github.io/MMP240demo/contact.html</a>
+            </p>
+            <p>You can also download my code at <a href="https://github.com/zhenzhenqi/MMP240demo">https://github.com/zhenzhenqi/MMP240demo</a>
+            </p>
+            <img class="img-responsive" src="{{ '/img/week4/customizedmap.png' | prepend: site.baseurl }}">
+            <li>Final step, in Chrome, check for responsiveness of this page on cellphone and iPad.</li>
+            <p>The main issue is spacing between Address and the navbar.</p>
+            <p>Ususally, we use media query to solve this problem. But here, because navbar's height never changes, we can simply solve this problem by giving Address a fixed margin-top: 100px.</p>
+            <iframe width="100%" height="300" src="//jsfiddle.net/s7cour24/23/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        </ol>
+
+
+    </div>
+</ol>

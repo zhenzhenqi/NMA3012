@@ -1,0 +1,106 @@
+---
+layout: default
+#title:  "Welcome to Jekyll!"
+#date:   2015-03-17 21:23:43
+#categories: jekyll update
+---
+
+
+<h2>Bootstrap continued</h2>
+<p>Today, we will keep exploring Bootstrap by building a one-page scrolldown site for an architecture firm, the demo site address is this one,<a href="http://zhenzhenqi.github.io/MMP240demo/">http://zhenzhenqi.github.io/MMP240demo/</a>
+</p>
+<a href="https://github.com/zhenzhenqi/MMP240demo">Download Materials Here. Click "Download Zip".</a>
+<p>We will first learn about responsive full-page background image design. Open Bracket, and set up a template with a responsive container.</p>
+<ol>
+<li>Now, add 5 new rows, give them unique ids.</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/3/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<li>Give each row a background image</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/4/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>Take a look at the preview. What do you see, and why?</p>
+<li>Style your background image class like the following, what do you see now, and why?</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/9/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>Try to comment out and uncomment each row in the css class, and check the preview. What do you see and why?</p>
+<li>Last, add the following property to the background image class css, and check the preview. What do you see and why?</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/7/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<li>Now, let's add some blank rows between the images, so we could input some texts.</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/8/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/8/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>Take a look at preview, what happened, and why?</p>
+<li>Now, let's add a footer to the bottom of our fluid container</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/13/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<li>Style the background of the footer div</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/11/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<li>Style the font of the footer div</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/12/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<li>Let's add a responsive menu on top. Because it will be full-length, fixed at the top of the page all the time, it can be put anywhere. Let's put it on the very top of body, outside of container fluid.</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/14/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<li>Let's change the menu position so that it is always fixed at the top of the website(notice the extra navbar-fixed-top class added in the nav tab</li>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/16/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<li>Let's style the navbar so it's transparent, with white text, and has no border.</li>
+<p>The important question is, within the bootstrap navbar codeblock, who controls background and border, who controls text color?</p>
+<p>Let's go to Bracket preview, right click and choose Inspect Element.</p>
+<p>Put your cursor on different lines of html code and observe the corresponding section highlighted on the website. </p>
+<p>Now, find the nav tab line in html and read the corresponding css attributes on the right handside column (see picture below) </p>
+<img class="img-responsive" src="{{ '/img/week3/inspectelement.jpg' | prepend: site.baseurl }}">
+    
+<p>click on the attribute value of background-color, change to different color, and see what happens on yoru webiste.</p>
+<p>From now on, Inspect Element will be your best friend. Use it to quickly identify html code to be targeted, and quickly test css styling here before you right it down in custom.css file. It will save you lots of time and effort.</p>
+<p class="alert alert-success">Now you should be able to answer the question by yourself: what's the css code that will make navbar background and border transparent? Also, how to place the entire navbar a bit more down, and towards the center of the website?</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/17/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p class="alert alert-success">Question, how to make the Brand "RAAD STUDIO" white, and a little bit thinner?</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/18/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p class="alert alert-success">Question, how to make the menu tabs on the right (work, contact, press etc.)white, with smaller text, and a white border around each tab?</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/19/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<strong>From now on, please stop using px and start using em when you style margin and peddings. We will get into the details about why em is better than px in a future class. The short answer is, em takes responsive design into consideration while px doesn not.</strong>
+<li>Now, let's fill in the first content area below our first featured image with a one-sentence punchline of the company's business. We want the punchline to be simple and bold, to stay at the center of the website. </li>
+<p>Let's give it 8 column width in desktop/ipad design and 12 column width(Full Width) in cellphone design. In order for an "8 column width" to stay in the center of the website, we need to offset it by 2 columns.</p>
+<p>Put the html code below inside the first "row class=intro" tag.</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/20/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p class="alert alert-success">Question, how could we style the background into a dark grey color, make the height of this section 120% of the viewport height, and make the h1 text a light grey color, flow 40% from the top of the section? (see image below)
+    <img class="img-responsive" src="{{ '/img/week3/punchline.png' | prepend: site.baseurl }}">
+</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/21/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>Now, if you drag the screen to iphone size, you will start to notice more issues. The big margin we added earlier on the navbar is offsetting the Brand Logo and the Menu tabs!!!</p>
+<p>What we need to do, is to disable the big navbar margin when people view our website from small cellphone screens. Copy the code below to the bottom of custom.css file</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/23/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>Now, if you take a look at our navbar with iphone size browser, the logo and Menu tabs should line up nicely on the same row. Yeah! </p>
+<p>We also need to reduce the font size of punchline in the cellphone screen by adding some h1 modifications inside our cellphone media query block.</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/25/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<li>Let's fill the second intro block with the CEO's photo and more intro text.</li>
+<p class="alert alert-success">Question: We want to put a quote from the CEO on the upper left, and the CEO's picture on the lower right of that page. We also want the background to be white, how?(see image reference below)
+    <img class="img-responsive" src="{{ '/img/week3/founder-rectangle.jpg' | prepend: site.baseurl }}">
+    
+</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/26/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/29/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p class="alert alert-success">Take a look at this page, do you like the design so far? To me, the CEO's photo is rectangular, which is a bit stagnant. So, I cropped it into a more playful circle in photoshop. (see below)
+    
+    <img class="img-responsive" src="{{ '/img/week3/founder-circle.jpg' | prepend: site.baseurl }}">
+</p>
+    
+<p>Better, isn't it. The credit at the bottom of the image is now aligned to the left. We can make it center aligned simply by adding a class="text-center" to inside the p tag.</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/30/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>Take a look at the design on cellphone screen sized browser. Font is a bit too big. Let's add a h3 modifier in our media query section of the css code to solve this problem. CEO image is also too close to the quote block above it. Let's fix that by adding a margin-top to the image.</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/u4e78y4j/31/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>Finally, let's make the image a bit smaller on cellphone by adjusting the xs columns it occupies in html file to "col-xs-5 col-xs-offset-7".</p>
+    
+<img class="img-responsive img-cellphone" src="{{ '/img/week3/founder-cellphone.jpg' | prepend: site.baseurl }}">
+    
+<li>On the next intro block, let's put some featured projects, and a small line of intro underneath it.
+    <p>So far, "col-xs-12" (full width on mobile design) has worked really well. Let's keep using it. And for this design on desktop, let's try "col-sm-10".</p>
+</li>
+<p>First, let's give this row an id="featured". Make its background white. Inside, let's create three new rows. First row, put a big title "FEATURED" in the middle. Put some intro text in the middle of the second row. In the third row, put 5 featured project images in the middle.</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/u4e78y4j/33/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/u4e78y4j/33/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>Some major issues with our image block. First, we need all images to be nested inside one single row. This can be achieved by adding additional columns around each image. Since all images need to add up to 12 columns, I added an additional image and made each image occupy 2 columns.</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/u4e78y4j/34/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<img class="img-responsive" src="{{ '/img/week3/feautured-upperalign.jpg' | prepend: site.baseurl }}">
+    
+<p>Much better now. We still need to size the images so they are the same size. </p>
+<li>Last, let's fill the final intro page with RAAD's community project - THE LOWLINE.
+    <p>We create three rows, one row for the title, one for embedding a TED talk video about this project, and a link to the actual project page for more information.</p>
+    <iframe width="100%" height="300" src="//jsfiddle.net/nycucumber/s7cour24/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+</li>
+<li>If you have been following along, you should have made a site that looks very similar to <a href="http://zhenzhenqi.github.io/MMP240demo/">http://zhenzhenqi.github.io/MMP240demo/</a>
+</li>
+</ol>

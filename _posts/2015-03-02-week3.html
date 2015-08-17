@@ -1,0 +1,73 @@
+--- 
+layout: default 
+#title: "Welcome to Jekyll!" 
+#date: 2015-03-17 21:23:43 
+#categories: jekyll update 
+---
+
+
+<h2>Responsive Web Design Case Study</h2>
+<p>Let's take a quick look at some examples of responsive web design<a href="http://designmodo.com/responsive-design-examples/" target="_blank"> here </a>
+</p>
+<p>Now, install <a href="https://chrome.google.com/webstore/detail/responsive-web-design-tes/objclahbaimlfnbjdeobicmmlnbhamkg?hl=en" target="_blank">this chrome extension </a> that will help us test responsive web design very easily.
+    <p>Now, let's open <a href="https://quiet-forest-8983.herokuapp.com/" target="_blank">this website </a>in Chrome, and use our extension to vew each and every page on both iphone5 and ipad mini.</p>
+    <p>Let's look at another example <a href="http://thoughtbot.com/" target="_blank">here </a>.</p>
+    <p>Let's take a look at Alibaba's US webiste<a href="http://www.alibaba.com/us" target="_blank"> here </a>. Simply view the landing page through iphone5 tester setter.</p>
+    <p>Let's compare it with Amazon's iphone experience<a href="http://www.amazon.com/" target="_blank"> here</a>, again view it through iphone 5 portrait setting through chrome tester.</p>
+    <p>One quick word on layout best practise, <a href="http://www.1stwebdesigner.com/symmetrical-asymmetrical-web-design/" target="_blank">here </a>.</p>
+    <p class="alert alert-success">Always start with the basics, one idea, symmetry layout, single color block, primitive shape, and build up onwards based on visual and functional needs.</p>
+    <p>Visual designers' <a href="https://vimeo.com/48425421" target="_blank">best friend number one</a>, symmetry.</p>
+    <p>Visual designers' <a href="https://www.youtube.com/watch?v=7TqqDvfvxd8" target="_blank">best friend number two</a>, black and white (also great use of lighting and blurring).</p>
+    <p>Visual desginers' best friend number three, Rechard Mcguire's Fear of the Dark, <a target="_blank" href="https://www.youtube.com/watch?v=buoG3gLa6Ik"> primitive shapes (and great mono-color tune).</a>
+    </p>
+    <p>Finally, let's breaks up into groups of 2 or 3 and talk about how to make <a target="_blank" href="http://raadstudio.com/"> this </a>web experience better.</p>
+    <p class="alert alert-success">A very good resource is <a target="_blank" href="http://www.siteinspire.com/">http://www.siteinspire.com/</a> Feel free to change the filter of style, type, subjects to find similar architecture website for reference.
+    </p>
+
+    <h2>Introduction of Scaffolding with Bootstrap</h2>
+    <h5>Basic template</h5>
+    <p>Open Brackets. Load in the Document/MMP240 folder we created from last week, and open up index.html</p>
+    <br>Delete what's currently on index.html, and paste in the following code.
+    <iframe width="100%" height="300" src="http://jsfiddle.net/zhenzhenqi/8npyqoa4/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    <p>This is the basic template for an html page. And the Bootstrap code goes in to the container div inside body</p>
+    <p>In Brackets, create an empty custom.css file and save it in MMP240 folder. Notice how it's already linked in the head of the html template.</p>
+
+    <h5>Bootstrap Scaffolding</h5>
+    <p>Now, we are ready to start bootstrap scaffolding.</p>
+    <p>Think of each element on your page as a football player in a group photo shoot. Click on this link and resize the page, notice what's happening to the football players.<a target="_blank" href="http://alistapart.com/article/responsive-web-design">http://alistapart.com/article/responsive-web-design</a>
+    </p>
+    <p>This, is exactly what Bootstrap Grid System does for you.</p>
+    <p>Now, let's make some rows and columns to build our first responsive page on index.html.</p>
+    <hr>
+
+    <!--                        <p>We will first do some basic execrise to have a better understanding on how bootstrap scaffolding works.</p>-->
+    <p>Bootstap has already has a very good set of demos online. Click <a href="http://getbootstrap.com/css/#grid" target="_blank">here</a> to go to Boostrap's offical documentation.</p>
+    <p>Bootstrap scaffolding has three basic elements, Container, Row, and Column. Whenever you start a new page, create a new Container insider Body Tag. Then, puts rows right inside the container, and Columns inside each Row.</p>
+    <p>Bootstrap already has designed some basic mediaquery settings for us, through four Column classes, col-xs, col-sm, col-md, col-lg.</p>
+    <img src="{{ '/img/bootstrapbreakpoints.jpg' | prepend: site.baseurl }}" class="img-responsive">
+
+    <p>For beginners, we can simply remember that any column design based on col-xs class will be rendered on cellphones, designs based on col-sm class will be rendered on tablets, designs based on col-md and col-lg will be rendered based on desktops.</p>
+    <p>We will use their code to do some execrise. But before that, let's add some stying code so we can see every DIV clearly.</p>
+    <p>Copy and paste the code below inside your <span class="span-class">custom.css</span> file.</p>
+<!--    <iframe width="100%" height="300" src="http://jsfiddle.net/nycucumber/0brhn40n/12/embedded/css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>-->
+{% highlight CSS %}
+div {
+    border:1px solid rgba(0,0,0,0.1);
+    background: #9C9C9C;
+    text-align:center;
+}
+.container-fluid, .container, .row{
+    background: #525252;
+}
+{% endhighlight %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="small">Demos on Bootstrap offical documentation page...</p>
+    <br>
+    <br>
+    <hr>
+    <h5>Create a one-page scroll down portfolio site!</h5>
+    <p>Dowload the image and text needed for our exercise from <a target="_blank" href="download/ZZYW%20STATIC.zip"> here</a>. After downloading it, double click to unzip it. Put the foleder into your site's directory.</p>
+    <p>Follow the example on www.zzyw.co, try to reconstruct the site by yourself.</p>

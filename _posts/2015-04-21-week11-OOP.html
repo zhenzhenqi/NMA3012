@@ -1,0 +1,162 @@
+--- 
+layout: default 
+---
+
+<div class="row">
+    <h2>OOP</h2>
+    <ol>
+        <li>This is an example similar to the alien's eyes example from last week.
+            {% highlight js %}
+            console.log("sketch.js loaded");
+
+var x;
+var y;
+var radius;
+var speed;
+
+
+
+function setup() {
+    x = random(200, width);
+    y = random(200, height);
+    radius = random(10, 30);
+    speed = 1;
+
+    var myCanvas = createCanvas(window.innerWidth, window.innerHeight);
+    myCanvas.parent('myP5Container');
+}
+
+
+function draw() {
+    clear();
+    fill("red");
+    x = x + random(-speed, speed);
+    y = y + random(-speed, speed);
+    ellipse(x, y, radius, radius);
+}
+            {% endhighlight %}
+        </li>
+        <li>Imagine you want 3 more bugs randomly jittering on the screen. How can you organize the code in a way that's most efficient?
+            {% highlight js %} 
+            var bug;  // Declare object
+
+function setup() {
+  createCanvas(710, 400);
+  // Create object
+  bug = new Jitter();
+}
+
+function draw() {
+  background(50, 89, 100);
+  bug.move();
+  bug.display();
+}
+
+// Jitter class
+function Jitter() {
+  this.x = random(width);
+  this.y = random(height);
+  this.diameter = random(10, 30);
+  this.speed = 1;
+
+  this.move = function() {
+    this.x += random(-this.speed, this.speed);
+    this.y += random(-this.speed, this.speed);
+  };
+
+  this.display = function() {
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  }
+};
+{% endhighlight %}
+        </li>
+        <li>Now, create three more bugs called bug2, bug3, and bug4.
+        </li>
+        <li>Now, let's create an object array to hold 50 bugs for us.
+            {% highlight js %} 
+            var bugs = []; // array of Jitter objects
+
+function setup() {
+  createCanvas(710, 400);
+  // Create objects
+  for (var i=0; i<50; i++) {
+    bugs.push(new Jitter());
+  }
+}
+
+function draw() {
+  background(50, 89, 100);
+  for (var i=0; i<bugs.length; i++) {
+    bugs[i].move();
+    bugs[i].display();
+  }
+}
+
+// Jitter class
+function Jitter() {
+  this.x = random(width);
+  this.y = random(height);
+  this.diameter = random(10, 30);
+  this.speed = 1;
+
+  this.move = function() {
+    this.x += random(-this.speed, this.speed);
+    this.y += random(-this.speed, this.speed);
+  };
+
+  this.display = function() {
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  };
+}
+        {% endhighlight %}
+        </li>
+        <li>Now, let's make and store a new bug every time when mouse is clicked. We can have as many bug as we want, if we just keep clicking the screen.
+            {% highlight js %} 
+            console.log("sketch.js loaded");
+
+var bugs = []; // array of Jitter objects
+
+function setup() {
+    var myCanvas = createCanvas(window.innerWidth, window.innerHeight);
+    myCanvas.parent('myP5Container');
+}
+
+function draw() {
+    clear();
+
+    for (var i = 0; i < bugs.length; i++) {
+        bugs[i].move();
+        bugs[i].display();
+    }
+}
+
+function mouseClicked() {
+    bugs.push(new Jitter());
+};
+
+
+// Jitter class
+function Jitter() {
+    this.x = random(width);
+    this.y = random(height);
+    this.diameter = random(10, 30);
+    this.speed = 1;
+
+    this.move = function () {
+        this.x += random(-this.speed, this.speed);
+        this.y += random(-this.speed, this.speed);
+    };
+
+    this.display = function () {
+        fill("red");
+        ellipse(this.x, this.y, this.diameter, this.diameter);
+    };
+};
+         {% endhighlight %} 
+        <p>here is the image for the script</p>
+        <img class="img-responsive" src="{{ '/img/bugs.jpg' | prepend: site.baseurl }}">
+        </li>
+       
+    </ol>
+</div>
+
