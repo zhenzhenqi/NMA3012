@@ -42,3 +42,84 @@ layout: default
     <a href="https://www.youtube.com/watch?v=YcbcfkLzgvs">Instructional Video on OOP in Processing</a>
 </div>
 
+
+<div>
+    <h2>Assignment</h2>
+    <p>Review Chapter 8 - Object Oriented Programming</p>
+    <p>Make a simple sketch that is organized in OOP format, with Class, Constructor, Function. See example below.</p>
+    {% highlight js %} 
+        int num=10;
+
+void setup(){
+  size(500, 300);
+  background(255);
+  smooth();
+  strokeWeight(1);
+  fill(150, 50);
+  drawCircles();  
+}
+
+void draw(){
+}
+
+void mouseReleased(){
+  drawCircles();
+}
+
+void drawCircles(){
+  background(255);
+  for(int i=0; i<num; i++){
+    Circle thisCirc=new Circle();
+    thisCirc.drawMe();
+    thisCirc.updateMe();
+  }
+}
+
+class Circle{
+  float x;
+  float y;
+  float radius;
+  color linecol, fillcol;
+  float alph;
+  float xmove, ymove;
+  
+  Circle(){
+  x=random(width);
+  y=random(height);
+  radius=random(100)+10;
+  linecol=color(random(255), random(5), random(255));
+  fillcol=color(random(255), random(5), random(255));
+  alph=random(50);
+  xmove=random(10)-5;
+  ymove=random(10)-5;
+  }
+  
+  void drawMe(){
+    noStroke();
+    fill(fillcol, alph);
+    ellipse(x, y, radius*2, radius*2);
+    stroke(linecol, 150);
+    noFill();
+    ellipse(x, y, 10, 10);
+  }
+  
+  void updateMe(){
+    x+=xmove;
+    y+=ymove;
+    if(x>(width+radius)){
+      x=0-radius;
+    }
+    if(x<(0-radius)){
+      x=width+radius;
+    }
+    if(y>(height+radius)){
+      y=0-radius;
+    }
+    if(y<(0-radius)){
+      x=height+radius;
+    }
+  }
+}
+    {% endhighlight %} 
+    
+</div>
