@@ -11,9 +11,12 @@ layout: default
 
 <div>
     <h2>Setting Pixels according to their 2D locations</h2>
+    <p>Let's consider the picture example below</p>
+        <div class="row">    
             <div class="col-lg-6">
                 <img src="{{ '/img/week7/cirlces.jpg' | prepend: site.baseurl }}" class="img-responsive">
             </div>
+        </div>
     <p>First we ask: which row is our target pixel on ==>row 2</p>
     <p>Then we ask: which column is our target pixel on ==>column 3</p>
     <p>Since there has been 2-1 entire rows of pixels with 3-1 individual pixels ahead of this one, its location in our pixel array should be:
