@@ -4,6 +4,43 @@ layout: default
 #date:   2015-03-17 21:23:43
 #categories: jekyll update
 ---
+<div>
+    <h2>Virtual Reality and Illusion</h2>
+</div>
+
+<div>
+    <h2>Virtual Reality as a visual concept</h2>
+    <blockquote>"The most elemental process of modern times is the conquest of the world as images."
+    <footer>Martin Heidegger, Holzwege, p. 92. Frankfurt: Klostermann (1980).</footer>
+    </blockquote>
+    <p>In virtual space, both historically and in the present, the illusion works on two levels: first, there is the classic function of illusion which is the playful and conscious submission to appearance that is the aesthetic enjoyment of illusion. Second, by intensifying the suggestive image effects and through appearance, this can temporarily overwhelm perception of the difference between mage space and reality. This suggestive power may, for a certain time, suspend the relationship between subject and object, and the "as if" may have effects on awareness. The power of a hitherto unknown or perfected medium of illusion to deceive the senses leads the observer to act or feel according to the scene or logic of the images and, to a certain degree, may even succeed in captivating awareness. This is the starting point for historic illusion spaces and their immersive successors in art and media history. They use mutlimedia to increase and maximize suggestion in order to erode the inner distance of the observer and ensure maximum effect for their message.</p>
+</div>
+
+<div>
+    <h2>Virtual Reality as an artistic concept</h2>
+    <h4>Lee Ufan - Making Infinity</h4>
+    <p>Lee was born in southern Korea in 1936 and witnessed the political convulsions that beset the Korean peninsula from the Japanese occupation to the Korean War, which left the country divided in 1953. He studied painting at the College of Fine Arts at Seoul National University and soon moved to Japan, where he earned a degree in philosophy. Over the last 40 years, he has lived and worked in Korea, Japan, and France, becoming a transnational artist in a postmodern world before those terms were current. "The dynamics of distance have made me what I am," he remarks.
+    <br><br>In the late 1960s, in an artistic environment emphasizing ideas of system, structure, and process, Lee emerged as the theoretical leader of Mono-ha (literally, "School of Things"), a Japanese movement that arose amid the collapse of colonial world orders, antiauthoritarian protests, and the rise of critiques of modernity. Lee’s sculptures, presenting dispersed arrangements of stones together with industrial materials like steel plates, rubber sheets, and glass panes, recast the object as a network of relations based on parity among the viewer, materials, and site. Lee was a pivotal figure in the Korean tansaekhwa (monochrome painting) school, which offered a fresh approach to minimalist abstraction by presenting repetitive gestural marks as bodily records of time’s perpetual passage. Deeply versed in modern philosophy and Asian metaphysics, Lee has coupled his artistic practice with a prodigious body of critical and philosophical writings.
+    <br><br>Marking Infinity is organized to reflect Lee’s method of working in iterative series and spans the 1960s to the present. Whether brush marks on canvas or stones placed just so on the ground, his markings in space elicit momentary, open-ended situations that engage the viewer viscerally. His distilled gestures, manifesting an extraordinary ethics of restraint, create an emptiness that is paradoxically generative and vivid. Relatum (formerly Phenomena and Perception A, 1969) presents three rocks laid on a latex band marked as a measuring tape. The weight of the rocks causes the band to stretch and buckle, disrupting the system of measurement it codes and reminding us of the capriciousness of rational truth: what you see is a result of where you stand.</p>
+    <br><a href="http://www.chateauversailles-spectacles.fr/en/spectacles/2014/lee-ufan-versailles">Lee Ufan and Chateu De Versailles</a>
+    <br><a href="http://www.luxuo.com/art/joana-vasconcelos-exhibition-palace-of-versailles.html">Joana Vasconcelos and Palace of Versallies</a>
+    <br><a href="http://mashkulture.net/2014/01/03/the-hypnotizingly-minimal-gifs-of-david-dope/#more-98168">David Dope - defining new standards for graphic based asthetics</a>
+    <br><a href="https://artcom.de/en/department/art-en/">ART+COM, parametric design and digital fabrication</a>
+    <br><a href="The Kármán Line">2015 BAFTA Awards Nominee for Best British Short Film - The Karmar Line by Oscar Sharp</a>
+</div>
+
+    <div>
+        <h4>Brent Watanabe</h4>
+        <a href="https://vimeo.com/62226233">for(){}; - Computer Game mapped on canvas</a>
+        <br><a href="http://bwatanabe.com/MacDowell_2013.html">Brent Watanabe</a>
+    </div>  
+
+    <div>
+        <h4>Skullmapping</h4>
+        <a href="http://www.skullmapping.com/">Skullmapping is a French artistic collective run by Antoon Verbeeck and Filip Sterckx</a>
+        <br><a href="https://vimeo.com/97645686">The Skyx</a>
+    </div>
+
 
 <div>
     <h2>Image Processing - Pixel Blending</h2>
@@ -238,14 +275,42 @@ void onVisibleUser(SimpleOpenNI curContext,int userId)
     
 <div>
     <h2>Video Manipulation</h2>
-    <h4>Capture Video</h4>
+    <h4>Capture Live Video</h4>
+    {% highlight js %} 
+    import processing.video.*;
+
+Capture video; //declare a capture object called video
+
+void setup() {
+  size(640, 480);
+  println(Capture.list());
+
+  // initialize video object, use the default camera at 320x240 resolution
+  video = new Capture(this, 640, 480);
+  video.start();
+}
+
+// An event for when a new frame is available, similar to mousePressed
+void captureEvent(Capture video) {
+  // Step 4. Read the image from the camera.
+  video.read();
+}
+
+void draw() {
+  // Step 5. Display the video image.
+  image(video, 0, 0);
+}
+    {% endhighlight %} 
+    
     <h4>Movie Scrub</h4>
-    <h4></h4>
+    
+    <h4>Play Speed</h4>
+    <h4>Live Pixel Blending</h4>
 </div>
 
 <div>
     <h2>Assignment</h2>
     <p>Read chapters on Images and Videos</p>
-    <p>Create a sketch using Images and or Video manipulation</p>
+    <p>Create a sketch using Images or Video manipulation</p>
 </div>
 
