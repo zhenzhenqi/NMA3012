@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div>
-    <h2>Arduino and Sparkfun workshop</h2>
+    <h2>Prototyping Interactivity - Arduino, Sparkfun, and Kinect Workshop</h2>
 </div>
 
 <div>
@@ -19,7 +19,7 @@ layout: default
 </div>
 
 <div>
-    <h2>Final Project Concept Buidling - continued</h2>
+    <h2>Final Project Concept Building - continued</h2>
     <h4>Body Movement</h4>
     <a href="https://www.youtube.com/watch?v=iQlDEPLHPyQ">Anarchy Dance Theater - Seven Senses</a>
     <br><a href="https://youtu.be/lX6JcybgDFo">Box explores the synthesis of real and digital space through projection-mapping on moving surfaces. The short film documents a live performance, captured entirely in camera. </a>
@@ -43,3 +43,75 @@ layout: default
     <a href="https://youtu.be/qTEchen97rQ?list=PLUgRTD1mpwSXQmCShm0FkyJUFNw3CxAwk">Ice Bucket Challenge</a>
 </div>
 
+
+<div>
+    <h2>Video Manipulation</h2>
+    <h4>Capture Live Video</h4>
+    {% highlight js %} 
+    import processing.video.*;
+
+Capture video; //declare a capture object called video
+
+void setup() {
+  size(640, 480);
+  println(Capture.list());
+
+  // initialize video object, use the default camera at 320x240 resolution
+  video = new Capture(this, 640, 480);
+  video.start();
+}
+
+// An event for when a new frame is available, similar to mousePressed
+void captureEvent(Capture video) {
+  // Step 4. Read the image from the camera.
+  video.read();
+}
+
+void draw() {
+  // Step 5. Display the video image.
+  image(video, 0, 0);
+}
+    {% endhighlight %} 
+    
+    <h4>Movie Scrub</h4>
+    
+    {% highlight js %} 
+    import processing.video.*;
+
+Movie mov; //declare move object
+
+void setup() {
+  size(640, 360);
+  mov = new Movie(this, "tickingclock.mp4"); //initialize move object
+  mov.play();
+}
+
+void draw() {
+    mov.read(); //start reading frames of movie according to its default sequence
+    image(mov, 0, 0); //draw movie at location 0, 0
+//  if (mouseX>width/2) {
+//    mov.pause();
+//  } else {
+//    mov.play();
+//  }
+
+  // Ratio of mouse X over width
+  float ratio = mouseX / (float) width;
+
+ // The jump() function allows you to jump immediately to a point of time within the video. 
+  // duration() returns the total length of the movie in seconds.  
+  mov.jump(ratio * mov.duration()); 
+}
+ {% endhighlight %} 
+    
+    
+    <h4>Play Speed</h4>
+    <h4>Live Pixel Blending</h4>
+</div>
+
+<div>
+    <h2>Assignment</h2>
+    <p>Visit the MOMA PS1 Greater New York Exhibition</p>
+    <p>Read Chapter on Video</p>
+    <p>Create a video manipulation sketch. Test out interaction with mouse.</p>
+</div>
