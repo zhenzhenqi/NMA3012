@@ -106,7 +106,60 @@ void draw() {
     
     
     <h4>Play Speed</h4>
-    <h4>Live Pixel Blending</h4>
+{% highlight js %}     
+import processing.video.*;
+
+Movie mov; //declare move object
+float tempPos = width/2; //stores mouse position from the previous frame
+float tempSpeed = 1;
+
+void setup() {
+  size(640, 360);
+  mov = new Movie(this, "tickingclock.mp4"); //initialize move object
+  mov.play(); //play movie once
+  mov.loop(); //loop video when finished
+}
+
+void draw() {
+    mov.read(); //start reading frames of movie according to its default sequence
+    mov.speed(tempSpeed);
+    image(mov, 0, 0); //draw movie at location 0, 0
+    
+//  interaction prototyping with mouse: control clock using mouseX position    
+//  if (mouseX>width/2) {
+//    mov.pause();
+//  } else {
+//    mov.play();
+//  }
+
+
+//interaction design 1: 
+//as people walk passed by the clock, their relative position rewinds the clock arm.
+  if(abs((mouseX - tempPos))>0){
+      // Ratio of mouse X over width
+  float ratio = mouseX / (float) width;
+
+ // The jump() function allows you to jump immediately to a point of time within the video. 
+  // duration() returns the total length of the movie in seconds.  
+  mov.jump(ratio * mov.duration()); 
+  }
+  tempPos = mouseX;
+
+
+//   //ineraction design 2: 
+//   //when people move in front of screen, make time go faster. when people slow down, clock arm goes back to normal speed.
+//    if(abs((mouseX - tempPos))>0){
+//      if(tempSpeed<10){
+//        tempSpeed+=0.8;
+//      }
+//    }else{
+//      if(tempSpeed>1){
+//        tempSpeed-=0.8;
+//      }
+//    }
+//    tempPos=mouseX;
+}
+{% endhighlight %} 
 </div>
 
 <div>
