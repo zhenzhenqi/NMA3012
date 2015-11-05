@@ -166,8 +166,29 @@ spotLight(255, 0, 0, width/2, height/2, 400, 0, 0, -1, PI/4, 2);
 </div>
 
 <div>
-    
+    <h2>Texture</h2>
+    {% highlight %}
+ PImage img;
+
+void setup(){
+  size(100, 100, P3D);
+  img = loadImage("jing-100.jpg");
+}
+
+void draw() {
+  background(0);
+  translate(width / 2, height / 2);
+  beginShape();
+  texture(img);
+  vertex(-100, -100, 0, 0,   0);
+  vertex( 100, -100, 0, 400, 0);
+  vertex( 100,  100, 0, 400, 400);
+  vertex(-100,  100, 0, 0,   400);
+  endShape();
+}
+    {% endhighlight %}
 </div>
 
 <div>
+    
 </div>
