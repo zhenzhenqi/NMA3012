@@ -104,7 +104,6 @@ void draw() {
 </div>
 
 <div>
-    <h2>P3D</h2>
     <h2>3d translation and rotation</h2>
     {% highlight js %}
     size(640,360,P3D);
@@ -126,4 +125,48 @@ stroke(255);
 sphere(280);
 popMatrix();
     {% endhighlight %}
+</div>
+
+<div>
+    <h2>3D lighting</h2>
+    {% highlight js %}
+void setup(){
+  size(600, 600, P3D);
+}
+
+void draw(){
+  background(0);
+
+  if(mousePressed){
+  //lights function has to be called before the shape is rendered.
+  
+  //lights();
+  //ambientLight(0,0,255);
+  //directionalLight(0, 255, 0, 0, -1, 0);  
+spotLight(255, 0, 0, width/2, height/2, 400, 0, 0, -1, PI/4, 2);
+}
+
+  pushMatrix();
+  translate(130, height/2, 0);
+  rotateY(1.25);
+  rotateX(-0.4);
+  noStroke();
+  fill(255);
+  box(100);
+  popMatrix();
+  
+  pushMatrix();
+  translate(500, height*0.35, -200);
+  noFill();
+  stroke(255);
+  sphere(280);
+  popMatrix();
+}
+    {% endhighlight %}
+</div>
+
+<div> 
+</div>
+
+<div>
 </div>
