@@ -52,7 +52,7 @@ void draw() {
 </div>
 
 <div>
-    <h2>Live Video Caputure</h2>
+    <h2>Live Image Caputure</h2>
     {% highlight js %} 
         import processing.video.*;
 
@@ -80,6 +80,80 @@ void draw() {
     {% endhighlight %}
 </div>
 
+<div>
+    <h2>Live Image Manipulation</h2>
+    <p>Pixel Sorting is one of the most commonly used ways to manipulate static and live image. After recording rgb value of each pixel, the algorithm draws a horizontal or vertical strip based on the location and color value of the original pixel.</p>
+    <p>Conceptual and digital artist Kim Asendorf takes as his media internet data, codes, and computer signals, manipulating them to produce visualizations, sculptures, and applications, as well as his own original file formats. A computer science graduate, Asendorf thinks of his experimental process as writing concept into algorithms: “the programming implements a random factor,” he has said. “It’s like drawing an image with closed eyes.” In 2010, Kim Ascendorf invented a pixel sorting algorithm and used it to produce a series of images called <a href="http://kimasendorf.com/mountain-tour/">Mountain Tour. </a>The images went viral on the internet overnight and Kim hailed as the founding father of procedural based Glitch Art.</p>
+    <p>Down load the Processing algorithm Kim released <a href="http://kimasendorf.com/data/ASDFPixelSort.zip">HERE</a> and try it out with your own image.</p>
+    <p>Now, let's adapt a similar pixelsorting based approach on live image captured by our camera.</p>
+    {% highlight js %} 
+        import processing.video.*;
+ 
+int numPixels;
+int[] backgroundPixels;
+Capture video;
+ 
+void setup() {
+  size(1280, 720, P3D);
+  background(0);
+  String[] cameras = Capture.list();
+ 
+  if (cameras == null) {
+    println("Failed to retrieve the list of available cameras, will try the default...");
+    video = new Capture(this, 1280, 720);
+  } if (cameras.length == 0) {
+    println("There are no cameras available for capture.");
+    exit();
+  } else {
+    println("Available cameras:");
+    for (int i = 0; i < cameras.length; i++) {
+      println(cameras[i]);
+    }
+ 
+    // The camera can be initialized directly using an element
+    // from the array returned by list():
+    video = new Capture(this, cameras[0]);
+    
+    // Start capturing the images from the camera
+    video.start();
+  }
+}
+ 
+void draw() {
+  if (video.available() == true) {
+    video.read();
+   
+    video.loadPixels();
+     
+    for (int y = 0; y<height; y+=1 ) {
+      for (int x = 0; x<width; x+=1) {
+        int loc = x + y*video.width;
+        float r = red (video.pixels[loc]);
+        float g = green (video.pixels[loc]);
+        float b = blue (video.pixels[loc]);
+        float av = ((r+g+b)/3.0);
+      
+      pushMatrix();
+      translate(x,y);
+      stroke(r,g,b);
+      if (r > 50 && r < 255) {
+          line(0,0,(av-100)/3,0); //change these values to alter the length. The closer to 0 the longer the lines. 
+         // you can also try different shapes or even bezier curves instead of line();
+      }
+      popMatrix(); 
+     }
+   }
+ }
+}
+    {% endhighlight %}
+</div>
+
+<div>
+    <h2>Live Image Manipulation</h2>
+    {% highlight js %} 
+    
+    {% endhighlight %}
+</div>
 
 
 
