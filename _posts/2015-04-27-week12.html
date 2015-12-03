@@ -6,7 +6,7 @@ layout: default
 <h2>Interaction Design</h2>
 
 <div>
-    <h2>Kinect Integration</h2>
+    <h4>Kinect Integration</h4>
     {% highlight js %} 
         ////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////simpleOpenNI integration - begin declaring variables//////////////
@@ -185,6 +185,23 @@ void onVisibleUser(SimpleOpenNI curContext,int userId)
 
 <div>
     <h2>Face Detection as Interface</h2>
+    <div>
+        <h4></h4>
+    
+    </div>
+    <div>
+        <h4>New Media Artist Adam Harvey on Viola-Jones algorithm</h4>
+        <p>the Viola-Jones algorithm and the OpenCV package, what I found are these files [indicating a series of files named haar_cascade.xml and other similar things]. And you get to choose these when you implement most any face detection in Processing or OpenFrameworks. You see these weird names like “Haar cascade”, “frontal face”, “alt tree”, and there are a couple of them. These are very fine-tuned profiles for what makes up a face. Those are four that are very common. People have made a lot of other variations of those.
+        <br><br>You can see some of them I think on my screen here. There’s one that makes up an eye [called haardcascade_eye.xml]. You can get one for a full body [haarcascade_fullbody.xml], left eye, right eye, glasses, mouth, nose, basically anything. There’s even one I found for a clock. You can locate a clock in an image.
+        <br><br>If you open up the XML file it’s this really hard to read syntax. In the XML file it has a node with sub-nodes and if you go all the way into the last node, you see these numbers like 3, 8, 12, 4, -1, and these things define the shape of these things called Haar features. So the Haar features are basically black and white rectangles. And the black and white rectangles can be visualized. They actually are black and white.
+        <br><br>They typically have like 20 to 30 different stages. The first stage is a very coarse scan of the image. I’ll talk about the scan in a second. But you can see in the first one here that there’s a black rectangle and a white one. And if you compare that to the face below it you can understand that the white is the highlight of the cheeks and the black is the darkness of the eyes, the shadow. And then if you look at the second one, there’s a lighter spot in the middle of the forehead and dark on the edges, which is where the hair would be. And then again on the third one the same thing as the second, but a little bit lower.
+            <br><br>Well, what you do is called, I think, the Integral Sum [the Integral Image or Summed Area Table] of the part of that image. All you do is sum the black and white pixels. So all images are converted to black and white: grayscale, 0 to 255. You take these values and you create a sum of all the pixels in that area. So then you’re comparing the sum of the grayscale values of the white to the sum of the grayscale values of the black region. And that’s pretty efficient and easy to do in an image by calculating those sums. And Viola-Jones are the ones who came up with that method and it is very efficient. To really understand ityou do have to read their paper to get the formulas. It’s easier to explain with formulas.
+            <br><br>
+        </p>
+        
+    </div>
+    
+   
     {% highlight js %} 
         
     {% endhighlight %}
