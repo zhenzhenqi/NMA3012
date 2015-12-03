@@ -8,6 +8,50 @@ layout: default
 </div>
 
 <div>
+    <h2>Load video</h2>
+    <p>Load in a pre-recorded video, play/stop, scrub movie, using mouseX position as proximity</p>
+    {% highlight js %}
+        import processing.video.*;
+
+Movie mov; //declare move object
+float tempPos = width/2; //stores mouse position from the previous frame
+float tempSpeed = 1;
+
+void setup() {
+
+  size(640, 360);
+  mov = new Movie(this, "tickingclock.mp4"); //initialize move object
+  mov.play(); //play movie once
+  mov.loop(); //loop video when finished
+}
+
+void draw() {
+    mov.read(); //start reading frames of movie according to its default sequence
+    mov.speed(tempSpeed);
+    image(mov, 0, 0); //draw movie at location 0, 0
+    
+//  interaction prototyping with mouse: control clock using mouseX position    
+//  if (mouseX>width/2) {
+//    mov.pause();
+//  } else {
+//    mov.play();
+//  }
+
+ 
+  if(abs((mouseX - tempPos))>0){
+      // Ratio of mouse X over width
+  float ratio = mouseX / (float) width;
+
+ // The jump() function allows you to jump immediately to a point of time within the video. 
+  // duration() returns the total length of the movie in seconds.  
+  mov.jump(ratio * mov.duration()); 
+  }
+  tempPos = mouseX;
+}
+    {% endhighlight %}
+</div>
+
+<div>
     <h2>Live Video Caputure</h2>
     {% highlight js %} 
         import processing.video.*;
