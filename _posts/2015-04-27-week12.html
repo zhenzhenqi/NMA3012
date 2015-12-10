@@ -186,8 +186,8 @@ void onVisibleUser(SimpleOpenNI curContext,int userId)
 <div>
     <h2>Face Detection as Interface</h2>
     <div>
-        <h4></h4>
-    
+        <h4>OfxFaceTracker</h4>
+        <p>ofxFaceTracker is openFrameworks addon for face tracking, based on Jason Saragih's FaceTracker library.</p>
     </div>
     <div>
         <h4>New Media Artist Adam Harvey on Viola-Jones algorithm</h4>
@@ -209,8 +209,12 @@ void onVisibleUser(SimpleOpenNI curContext,int userId)
         <iframe src="https://player.vimeo.com/video/12774628?title=0&byline=0&portrait=0" width="500" height="477" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         This video visualizes the detection process of OpenCV's face detector. The algorithm uses the Viola Jones method of calculating the integral image and then performing some calculations on all the areas defined by the black and white rectangles to analyze the differences between the dark and light regions of a face. The sub-window (in red) is scanned across the image at various scales to detect if there is a potential face within the window. If not, it continues scanning. If it passes all stages in the cascade file, it is marked with a red rectangle. But this does not yet confirm a face. In the post-processing stage all the potential faces are checked for overlaps. Typically, 2 or 3 overlapping rectangles are required to confirm a face. Loner rectangles are rejected as false-positives.
         </p>
-        
     </div>
-
+    <div>
+        <h4>How to use OFX facetracker library</h4>
+        <ul>
+            <li>Double click keepfacedetection file, keep it open at all times</li>
+        </ul>
+    </div>
 </div>
 
