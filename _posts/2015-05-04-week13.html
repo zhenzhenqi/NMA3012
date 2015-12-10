@@ -8,15 +8,112 @@ layout: default
 
 <div>
     <p>Last week, we talked about Facetracking algorithm's creative adaptation. This week, we will develop a project using CLM face tracking addon for openFrameworks based on Jason Saragih's <a href="http://facetracker.net/">FaceTracker</a> algorithm. Jason Saragih graduated with a PhD in computer science at National Australian University in 2004. Viola Johns algorithm was Jason's graduation thesis, which he developed further while working as a HCI researcher at the Robotics Institute at Carnegie Mellon University. Jason is currently a research scientist at Oculus, focusing on application of pattern recognition and machine learning techniques to the specific problem of biometric learning. At the front end, this involves the learning, detection and registration of nonrigid objects, in particular the human face. He is also interested in the utility of features extracted from this process for recognition tasks, in particular that of affect and identity, geared towards Human Computer Interaction. 
-        <br>The <a href="https://github.com/kylemcdonald/ofxFaceTracker">OpenFrameworks application</a>  that we will use today is further developed by NYU adjunct professor <a href="http://kylemcdonald.net/">Kyle McDonald</a>, who contributes frequently to creative applications related to computer vision and interaction.
-        
-        <br>Finally, we will use a new Processing library called OSCP5 to read in face tracking data from Kyle's openFrameworks application developed by electronic musician and artist <a href="http://www.sojamo.de/">Andreas Schlegel</a>. Open Sound Control (OSC) is a protocol for communication among computers, sound synthesizers, and other multimedia devices that is optimized for modern networking technology. Bringing the benefits of modern networking technology to the world of electronic musical instruments, OSC's advantages include interoperability, accuracy, flexibility, and enhanced organization and documentation. 
+        <br>The <a href="https://github.com/kylemcdonald/ofxFaceTracker">OpenFrameworks application</a>  that we will use today is further developed by NYU adjunct professor <a href="http://kylemcdonald.net/">Kyle McDonald</a>, who contributes frequently to creative applications related to computer vision and interaction. 
+        <br>Finally, we will use a new Processing library called oscP5 to read in face tracking data from Kyle's openFrameworks application developed by electronic musician and artist <a href="http://www.sojamo.de/">Andreas Schlegel</a>. oscP5 is an OSC implementation for the programming environment processing. OSC is the acronym for Open Sound Control, a network protocol developed at cnmat, UC Berkeley. Open Sound Control is a protocol for communication among computers, sound synthesizers, and other multimedia devices that is optimized for modern networking technology and has been used in many application areas.Networking operations are handled by package netP5 which can also be used on its own for various networking operations which do not necessarily require OSC as protocol.
     </p>
 </div>
 
 <div>
-    
+    <h2>Receiving OSC data in Processing</h2>
+    {% highlight js %} 
+        //receive osc data from face expression debug
+import oscP5.*;
+import netP5.*;
+
+//declare an oscp5 object
+OscP5 oscP5;
+
+float smileValue;
+
+void setup() {
+  size(300, 300);
+  //This is a port address from which sender application is sending out data
+  oscP5 = new OscP5(this, 12345);
+}
+
+void draw() {
+  background(0);
+  text(smileValue, 10, 10);
+}
+
+void oscEvent(OscMessage theOscMessage) {
+  /* print the address pattern and the typetag of the received OscMessage */
+  smileValue = theOscMessage.get(0).floatValue();
+}
+
+
+    {% endhighlight %}
 </div>
 
+<div>
+    <h2>using smile to trigger Donald Trump dollar rain</h2>
+    {% highlight js %} 
+        import oscP5.*;
+import netP5.*;
 
+OscP5 oscP5;
+
+float smileValue;
+PImage myImage;
+
+Animation dollarRain;
+
+float glitchVariable = 1;
+
+void setup() {
+  size(500, 367, P3D);
+  background(0);
+  myImage = loadImage("alg-donald-trump-jpg.jpg");
+  oscP5 = new OscP5(this, 12345);
+  dollarRain = new Animation("dollarRain", 15);
+  frameRate(10);
+}
+
+void draw() {
+  background(loadImage("alg-donald-trump-jpg.jpg"));
+  if (smileValue <= 0.001) {
+    dollarRain.display(0, 0);
+  } else {
+  }
+}
+
+void oscEvent(OscMessage theOscMessage) {
+  /* print the address pattern and the typetag of the received OscMessage */
+  smileValue = theOscMessage.get(0).floatValue();
+}
+// Class for animating a sequence of GIFs
+
+class Animation {
+  PImage[] images;
+  int imageCount;
+  int frame;
+
+  Animation(String imagePrefix, int count) {
+    imageCount = count;
+    images = new PImage[imageCount];
+
+    for (int i = 0; i < imageCount; i++) {
+      // Use nf() to number format 'i' into four digits
+      String filename = imagePrefix + i + ".png";
+      images[i] = loadImage(filename);
+    }
+  }
+
+  void display(float xpos, float ypos) {
+    frame = (frame+1) % imageCount;
+    image(images[frame], xpos, ypos, width, height);
+    blend(images[frame], 0, 0, 33, 100, 67, 0, 33, 100, SUBTRACT);
+  }
+
+  int getWidth() {
+    return images[0].width;
+  }
+
+  int getHeight() {
+    return images[0].height;
+  }
+}
+
+    {% endhighlight %}
+</div>
     
